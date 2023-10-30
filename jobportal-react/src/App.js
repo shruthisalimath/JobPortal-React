@@ -1,13 +1,17 @@
 import React from "react";
 import Header from "./Components/Header"; 
-import SearchBar from "./Components/SearchBar"
+import SearchBar from "./Components/SearchBar";
+import NewjobPosting from "./Components/Job-Posting/NewJobposting";
 function App() {
   return (
     <div className="JobPortal">
-     <Header></Header>
+     <Header />
+     <NewjobPosting />
+
      <div className="searchbar">
-     <SearchBar></SearchBar>
+     <SearchBar />
      </div>
+
     </div>
   );
 }
