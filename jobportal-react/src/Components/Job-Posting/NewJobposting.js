@@ -8,7 +8,7 @@ import Modal from 'react-bootstrap/Modal';
 
 
 const Newjob = () => {
-    const [show, setShow] = useState(true);
+    const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false );
     //const handleShow = () => setShow(true);
