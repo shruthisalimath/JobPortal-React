@@ -20,5 +20,18 @@ body {
 }
 .jp{
   padding-top: 30px;
+ 
 }
 
+.searchbar {
+  background-color: dimgray;
+  width:100%;
+  justify-content: center;
+  display:inline-flexbox;
+  padding:20px;
+}
+
+.search-bar{
+  justify-content: center;
+  padding-left: 20%;
+}
