@@ -2,10 +2,20 @@ import React, { useState, useEffect } from 'react';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
+import EditJobPosting from './EditJobPostng';
 
 
 const JobList = () => {
   const [jobs, setJobs] = useState([]);
+
+  const [showEditJob, setShowEditJob ] = useState (false);
+  const [jobToEdit, setJobToEdit ] = useState(null);//store jobId to edit
+
+  const handleEdit = (jobId) => {
+    console.log("Edit button clicked");
+    setJobToEdit(jobId);//set job Id to edit
+    setShowEditJob(true);
+};
 
   useEffect(() => {
     fetchJobs();
@@ -51,12 +61,13 @@ const JobList = () => {
             <Card.Text>
               Skills:{job.skills}
             </Card.Text>
-            <Button variant="primary" type="submit" >Edit</Button>
+            <Button variant="primary" type="submit" onClick= {() => handleEdit(job.id)}>Edit</Button>
             <Button variant="primary" type="submit" onClick={() => handleDelete(job.id)}>Delete</Button>
             
           </Card.Body>
         ))}
       </Card>
+      {showEditJob && <EditJobPosting  jobId={jobToEdit}/>}
     </div>
   );
 }
