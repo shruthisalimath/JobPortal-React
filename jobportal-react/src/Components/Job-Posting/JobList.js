@@ -46,9 +46,9 @@ const JobList = () => {
   }
 
   return (
-    <div>
-      <h1>Job Listing</h1>
-      <Card style={{ width: '25rem' }}>
+    <div className='JobList'>
+      <h1 className='list-title'>Job Listing</h1>
+      <Card className='list'>
         {jobs.map((job) => (
           <Card.Body key={job.id}>
             <Card.Title>Job Title:{job.title} </Card.Title>

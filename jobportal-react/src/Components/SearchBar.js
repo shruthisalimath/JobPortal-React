@@ -13,14 +13,16 @@ const SearchBar = () => {
                 <Form>
                     <Row>
                         <Form.Group as={Col} className="Job-Duration">
-                            <Form.Select  defaultValue="Full-time">
+                            <Form.Select  defaultValue="ALL">
+                                <option value="ALL" >ALL</option>
                                 <option value="Full-time" >Full-time</option>
                                 <option value="Part-time" >Part-time</option>
                                 <option value="Contract" >Contract</option>
                             </Form.Select>
                         </Form.Group>
                         <Form.Group as={Col} className="Job-Location">
-                            <Form.Select defaultValue="On-Site">
+                            <Form.Select defaultValue="ALL">
+                                <option value="ALL" >ALL</option>
                                 <option value="On-Site">On-Site</option>
                                 <option value="Remote"  >Remote</option>
                                 <option value="Hybrid" >Hybrid</option>

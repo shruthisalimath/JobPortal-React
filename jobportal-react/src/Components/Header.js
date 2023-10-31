@@ -8,9 +8,6 @@ import NewJobPosting from './Job-Posting/NewJobPosting';
 const Header = () => {
     const [showNewJob, setShowNewJob ] = useState (false);
 
-// const handleShow =() => {
-//     setShowNewJob(true);
-// };
 const handleShow = () => {
     console.log("Job-Posting button clicked");
     setShowNewJob(true);
