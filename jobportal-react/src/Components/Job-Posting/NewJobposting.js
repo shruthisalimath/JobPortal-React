@@ -9,7 +9,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
 
-const Newjob = () => {
+const NewJobPosting = () => {
     const [show, setShow] = useState(true);
 
     const [newJob, setNewJob ] = useState({
@@ -34,6 +34,7 @@ const Newjob = () => {
 
     const createNewJob = (e) => {
         e.preventDefault();//prevent default form submission
+        console.log("New Job Data to be Submitted:", newJob)
         axios.post('http://localhost:5001/jobs', newJob)
         .then ((res) => {
             //handle success
@@ -113,4 +114,4 @@ const Newjob = () => {
     );
 };
 
-export default Newjob;
+export default NewJobPosting;

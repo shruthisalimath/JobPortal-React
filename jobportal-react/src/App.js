@@ -1,14 +1,16 @@
 import React from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.css';
 import Header from "./Components/Header"; 
 import SearchBar from "./Components/SearchBar";
-import NewjobPosting from "./Components/Job-Posting/NewJobposting";
+// import NewJobPosting from "./Components/Job-Posting/NewJobPosting";
 import JobList from "./Components/Job-Posting/JobList";
 
 function App() {
   return (
     <div className="JobPortal">
      <Header />
-     <NewjobPosting />
+     {/* <NewjobPosting /> */}
 
      <div className="searchbar">
      <SearchBar />
@@ -17,7 +19,7 @@ function App() {
      <div className="JobList">
       <JobList />
      </div>
-
+     {/* <NewJobPosting /> */}
     </div>
   );
 }
