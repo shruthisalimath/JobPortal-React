@@ -43,3 +43,21 @@ body {
 #formGridLocation {
   margin-top: 4%;
 }
+
+.JobList {
+background-color: lightslategrey;
+}
+
+.list-title{
+display: flex;
+justify-content:center;
+padding:15px;
+font-size: 40px;
+color:white;
+margin:auto;
+}
+
+.list{
+background-color:lightgrey;
+
+}

@@ -48,16 +48,16 @@ const JobList = () => {
   return (
     <div className='JobList'>
       <h1 className='list-title'>Job Listing</h1>
-      <Card className='list'>
+      <Card >
         {jobs.map((job) => (
-          <Card.Body key={job.id}>
+          <Card.Body className='list' key={job.id}>
             <Card.Title>Job Title:{job.title} </Card.Title>
             <Card.Subtitle className="mb-2 text-muted">Company Name:{job.companyname}</Card.Subtitle>
             <Card.Text>
               Description: {job.description}
             </Card.Text>
-            <Card.Subtitle className="mb-2 text-muted">Job-Type: {job.type} </Card.Subtitle>
-            <Card.Subtitle className="mb-2 text-muted">JOb-Location: {job.location} </Card.Subtitle>
+            <Card.Text className="mb-2 text-muted">Job-Type: {job.type} </Card.Text>
+            <Card.Text className="mb-2 text-muted">Job-Location: {job.location} </Card.Text>
             <Card.Text>
               Skills:{job.skills}
             </Card.Text>
