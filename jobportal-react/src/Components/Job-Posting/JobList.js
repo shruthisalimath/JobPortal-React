@@ -22,6 +22,18 @@ const JobList = () => {
     });
   };
 
+  const handleDelete = (jobId) =>{
+    //make an API request to delete the job on server
+    axios.delete(`http://localhost:5001/jobs/${jobId}`)
+    .then((res) => {
+      console.log("Job deleted successfully!!", res);
+      //update local state to remove the deleted job
+      setJobs(jobs.filter(job => job.id !== jobId));
+    })
+    .catch ((error) => {
+      console.error("Error deleting job!!", error);
+    });
+  }
 
   return (
     <div>
@@ -40,7 +52,7 @@ const JobList = () => {
               Skills:{job.skills}
             </Card.Text>
             <Button variant="primary" type="submit" >Edit</Button>
-            <Button variant="primary" type="submit">Delete</Button>
+            <Button variant="primary" type="submit" onClick={() => handleDelete(job.id)}>Delete</Button>
             
           </Card.Body>
         ))}
