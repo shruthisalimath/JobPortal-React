@@ -2,7 +2,7 @@ import React from "react";
 import Header from "./Components/Header"; 
 import SearchBar from "./Components/SearchBar";
 import NewjobPosting from "./Components/Job-Posting/NewJobposting";
-import JobCard from "./Components/Job-Posting/JobCard";
+import JobList from "./Components/Job-Posting/JobList";
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
      </div>
 
      <div className="JobList">
-      <JobCard />
+      <JobList />
      </div>
 
     </div>

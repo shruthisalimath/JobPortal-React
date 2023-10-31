@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import axios from 'axios';
+
 
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
@@ -8,7 +10,40 @@ import Modal from 'react-bootstrap/Modal';
 
 
 const Newjob = () => {
-    const [show, setShow] = useState(false);
+    const [show, setShow] = useState(true);
+
+    const [newJob, setNewJob ] = useState({
+        title: '', 
+        type:'Full-time',
+        companyname: '', 
+        location: 'on-site',
+        description: '',
+        skills: ''       
+     });
+
+     const jobTypes = ['full-time','part-time','contract'];
+     const jobLocation = ['on-site','remote','hybrid'];
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setNewJob((prevJob) => ({ 
+            ...prevJob, 
+            [name]: value,
+        }));
+    };
+
+    const createNewJob = (e) => {
+        e.preventDefault();//prevent default form submission
+        axios.post('http://localhost:5001/jobs', newJob)
+        .then ((res) => {
+            //handle success
+            console.log("New Job Added!!", res.data);
+        })
+        .catch ((error) => {
+            //handle errors
+            console.log('Error Adding Job!!', error);
+        });
+    }
 
     const handleClose = () => setShow(false );
     //const handleShow = () => setShow(true);
@@ -25,15 +60,16 @@ const Newjob = () => {
                         <Row className='mb-3'>
                             <Form.Group as={Col} controlId='formGridTitle'>
                                 <Form.Label>Job-Title</Form.Label>
-                                <Form.Control />
+                                <Form.Control type='text' name='title' placeholder='Job Title' value ={newJob.title} onChange = {handleInputChange} />
                             </Form.Group>
                             <Form.Group as={Col} controlId="formGridDuration"> <br></br>
 
                            
-                                <Form.Select defaultValue="Full-time">
-                                    <option value="Full-time" >Full-time</option>
-                                    <option value="Part-time" >Part-time</option>
-                                    <option value="Contract" >Contract</option>
+                                <Form.Select name='type' value={newJob.type} onChange={handleInputChange}>
+                                    {jobTypes.map((jobTypes) => (
+                                    <option key={jobTypes} value={jobTypes} >
+                                        {jobTypes} </option>
+                                    ))}
                                 </Form.Select>
                             </Form.Group>
                         </Row>
@@ -41,23 +77,25 @@ const Newjob = () => {
                         <Row className='mb-3'>
                             <Form.Group as={Col} controlId='formGridCompany'>
                                 <Form.Label>Company-Name</Form.Label>
-                                <Form.Control />
+                                <Form.Control type='text' name='companyname' placeholder='Company Name' value ={newJob.companyname} onChange = {handleInputChange}/>
                             </Form.Group>
+
                             <Form.Group as={Col} controlId="formGridLocation"><br></br>
-                                <Form.Select defaultValue="On-Site">
-                                    <option value="On-Site">On-Site</option>
-                                    <option value="Remote"  >Remote</option>
-                                    <option value="Hybrid" >Hybrid</option>
+                                <Form.Select name='location' value={newJob.location} onChange={handleInputChange}>
+                                {jobLocation.map((jobLocation) => (
+                                    <option key={jobLocation} value={jobLocation} >
+                                        {jobLocation} </option>
+                                    ))}
                                 </Form.Select>
                             </Form.Group>
                         </Row>
                         <Form.Group className="mb-3" controlId="jobdescription">
                             <Form.Label>Job Description</Form.Label>
-                            <Form.Control as="textarea" rows={3} />
+                            <Form.Control as="textarea" rows={3}  name='description' placeholder='Description' value ={newJob.description} onChange = {handleInputChange} />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="Skills">
                             <Form.Label>Skills</Form.Label>
-                            <Form.Control as="textarea" rows={2} />
+                            <Form.Control as="textarea" rows={2} name='skills' placeholder='Skills' value ={newJob.skills} onChange = {handleInputChange} />
                         </Form.Group>
 
                     </Form>
@@ -66,7 +104,7 @@ const Newjob = () => {
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={handleClose}>
+                    <Button variant="primary" onClick={createNewJob}>
                         Save 
                     </Button>
                 </Modal.Footer>

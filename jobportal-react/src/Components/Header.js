@@ -5,7 +5,9 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 
 
+
 const Header = () => {
+    
     return (
         <div className='Header'>
             <Container>
@@ -15,7 +17,7 @@ const Header = () => {
                     
                     
                     <Col sm={4} className='jp'>
-                        <Button variant="info" size="lg" className='jobposting'>Job-Posting</Button>
+                        <Button variant="info" size="lg" className='jobposting' >Job-Posting</Button>
                     </Col>
                     
                 </Row>
