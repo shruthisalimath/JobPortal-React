@@ -40,6 +40,7 @@ const NewJobPosting = () => {
             //handle success
             console.log("New Job Added!!", res.data);
             handleClose(); //close the modal after successful job posting
+            window.location.reload();
         })
         .catch ((error) => {
             //handle errors
